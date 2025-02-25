@@ -98,6 +98,12 @@
         color: var(--gray-100);
         line-height: 1.4;
         margin-top: 1rem;
+        border: 2px solid var(--gray-900);
+        transition: border-color 0.2s;
+
+        &:focus {
+            border-color: var(--green-500);
+        }
     }
 
     & button{
@@ -127,5 +133,9 @@
         display: none;
     }
     
+}
+
+.commentList {
+    overflow-x: hidden;
 }
  

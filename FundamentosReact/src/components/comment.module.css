@@ -2,6 +2,14 @@
     margin-top: 1.5rem;
     display: flex;
     gap: 1rem;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.3s ease-in-out;
+    animation: commentAppear 0.3s ease-in-out;
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    max-height: 200px; /* Valor aproximado que deve cobrir a altura máxima do comentário */
 
     & > img {
         width: 3rem;
@@ -11,6 +19,8 @@
 
     .commentBox {
         flex: 1;
+        position: relative;
+        width: 100%;
 
         footer{
             margin-top: 1rem;
@@ -49,6 +59,8 @@
         background-color: var(--gray-700);
         border-radius: 8px;
         padding: 1rem;
+        width: 100%;
+        position: relative;
 
         header{
             display: flex;
@@ -90,4 +102,24 @@
             color: var(--gray-400);        
         }
     }
+}
+
+@keyframes commentAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.commentDeleting {
+    opacity: 0;
+    transform: translateX(100%);
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    max-height: 0;
 }

@@ -1,15 +1,20 @@
 import { ThumbsUp, Trash } from 'phosphor-react';
 import styles from './comment.module.css';
 import { Avatar } from './avatar';
+import { useState } from 'react';
 
-export function Comment({ content, deleteComment }) {
+export function Comment({ content, deleteComment, id }) {
+    const [isDeleting, setIsDeleting] = useState(false);
 
     function handleDeleteComment() {
-        deleteComment(content);
+        setIsDeleting(true);
+        setTimeout(() => {
+            deleteComment(id);
+        }, 300);
     }
 
     return (
-        <div className={styles.comment}>
+        <div className={`${styles.comment} ${isDeleting ? styles.commentDeleting : ''}`}>
             <Avatar src="https://avatars.githubusercontent.com/u/88509491?v=4" alt="" />
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
