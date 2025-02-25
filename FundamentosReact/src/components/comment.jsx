@@ -15,9 +15,11 @@ export function Comment({ content, deleteComment, id }) {
     }
 
     function handleLikeComment() {
-        setLikeCount(likeCount + 1);
+        setLikeCount((state)=> {
+            return state + 1
+        });
     }
-    
+
     return (
         <div className={`${styles.comment} ${isDeleting ? styles.commentDeleting : ''}`}>
             <Avatar src="https://avatars.githubusercontent.com/u/88509491?v=4" alt="" />
