@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export function Comment({ content, deleteComment, id }) {
     const [isDeleting, setIsDeleting] = useState(false);
+    const [likeCount, setLikeCount] = useState(0);
 
     function handleDeleteComment() {
         setIsDeleting(true);
@@ -13,6 +14,10 @@ export function Comment({ content, deleteComment, id }) {
         }, 300);
     }
 
+    function handleLikeComment() {
+        setLikeCount(likeCount + 1);
+    }
+    
     return (
         <div className={`${styles.comment} ${isDeleting ? styles.commentDeleting : ''}`}>
             <Avatar src="https://avatars.githubusercontent.com/u/88509491?v=4" alt="" />
@@ -30,9 +35,9 @@ export function Comment({ content, deleteComment, id }) {
                     <p>{content}</p>
                 </div>
                 <footer>
-                    <button>
+                    <button onClick={handleLikeComment}>
                         <ThumbsUp />
-                        Aplaudir <span>20</span>
+                        Aplaudir <span>{likeCount}</span>
                     </button>
                 </footer>
             </div>
